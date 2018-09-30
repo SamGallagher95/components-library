@@ -89,9 +89,19 @@ app.createComponent(new CustomComponent());
 
 This unpacks exactly as the one above unpacks.
 
+## App Documentation
+
+### Methods
+
+- app.createComponent(component) - Creates a component and pushes to memory. Component paramater is a class that either extends Component or a prebuilt component. Returns the instance of the component.
+
+- app.getComponent(dataComponentId) - Returns a specific component from memory using the data-component-id field to find it. If there are multiple components using the same data-component-id, the last one will be returned.
+
+- app.destroyComponent(component) - Destroys the component from memory. The component MUST be passed as the paramater, which can be accessed by storing it from the createComponent method, or using the getComponent(component) method.
+
 ## Component Documentation
 
-_Lifecycle Hooks_
+### Lifecycle Hooks
 
 - onImmeadiate - Fires immeadiatly when the component is stored in memory. Disregarding all other components. This can be unpredictable and should be used when extensive testing and caution.
 
