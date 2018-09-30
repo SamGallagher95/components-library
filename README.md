@@ -145,3 +145,37 @@ class CustomComponent extends Component {
 - onInit - Fires when the component is initialized, but after all of the components have been created and stored in memory. This will be your primary entry point for most of your component logic.
 
 - onDestroy - Fires when a comoponent is destroyed and removed from memory. Not often used for these types of projects.
+
+### Methods
+
+- addDomEvent(event, dataEventId, callback) - This method creates an event handler for your DOM event. Event is a string of the event type ("click", "mouseenter", ... ) see https://developer.mozilla.org/en-US/docs/Web/Events for all types. Example below.
+
+Let say I want to alert "THIS IS AN ALERT" when a user clicks a button labeled Click Me.
+
+index.html
+
+```
+...
+<div data-component-id="component">
+   <button data-event-id="button">Click Me</button>
+</div>
+```
+
+scripts.ts
+
+```
+import { App } from "./component-class/base/app";
+import { Component } from "./component-class/base/component";
+
+const app = new App();
+
+class ExampleComponent extends Component {
+    public dataComponentId = "component;
+    onInit() {
+        this.addDomEvent("click", "button", () => {
+            alert("THIS IS AN ALERT");
+        });
+    }
+}
+app.createComponent(new ExampleComponent());
+```

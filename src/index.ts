@@ -13,6 +13,10 @@ class Sidebar extends TransformingNavigation {
   public dataComponentId = "sidebar";
   onInit() {
     console.log("HELLO THIS IS SIDEBAR");
+    // Events
+    this.addDomEvent("click", "buttonClick", () => {
+      alert("TESTING");
+    });
   }
 }
 

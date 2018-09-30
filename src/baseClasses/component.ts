@@ -9,6 +9,18 @@ export class Component extends EventEmitter {
     this._rawDom = document.querySelector(
       `[data-component-id='${this.dataComponentId}']`
     );
-    console.log(this._rawDom);
+  }
+
+  public addDomEvent(event: string, dataEventId: string, callback: Function) {
+    this.getElmFromAttr("data-event-id", dataEventId).addEventListener(
+      event,
+      () => {
+        callback.apply(this);
+      }
+    );
+  }
+
+  private getElmFromAttr(attr: string, value: string) {
+    return this._rawDom.querySelector(`[${attr}='${value}'`);
   }
 }
