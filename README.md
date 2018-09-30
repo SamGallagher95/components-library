@@ -90,3 +90,11 @@ app.createComponent(new CustomComponent());
 This unpacks exactly as the one above unpacks.
 
 ## Component Documentation
+
+_Lifecycle Hooks_
+
+- onImmeadiate - Fires immeadiatly when the component is stored in memory. Disregarding all other components. This can be unpredictable and should be used when extensive testing and caution.
+
+- onInit - Fires when the component is initialized, but after all of the components have been created and stored in memory. This will be your primary entry point for most of your component logic.
+
+- onDestroy - Fires when a comoponent is destroyed and removed from memory. Not often used for these types of projects.

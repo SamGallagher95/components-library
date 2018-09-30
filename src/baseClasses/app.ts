@@ -14,6 +14,17 @@ export class App extends EventEmitter {
 
   public createComponent(component: any) {
     this._componentList.push(component);
+    if (typeof component.onImmeadiate === "function") {
+      component.onImmeadiate();
+    }
+    return component;
+  }
+
+  public destroyComponent(component: any) {
+    if (typeof component.onDestroy === "function") {
+      component.onDestroy();
+    }
+    this._componentList.splice(this._componentList.indexOf(component), 1);
   }
 
   private init() {
