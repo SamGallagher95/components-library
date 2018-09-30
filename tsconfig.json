@@ -1,0 +1,7 @@
+{
+  "files": ["src/*.ts", "src/**/*.ts"],
+  "compilerOptions": {
+    "target": "es2015",
+    "experimentalDecorators": true
+  }
+}
