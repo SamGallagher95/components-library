@@ -138,9 +138,42 @@ class CustomComponent extends Component {
 }
 ```
 
+- boundDataMap: Map<string, any> - This is a map that represents all of the bound data in the component. If set in the onImmeadiate lifecycle hook it will be immediatly implemented to the DOM. Use mustache syntax to refer to bound data in the component DOM. Example below.
+
+Let's say I want to display my name on a webpage, but using bound data.
+
+index.html
+
+```
+...
+<div data-component-id="component">
+   <h1>Hello my name is {{name}}</h1>
+</div>
+```
+
+script.ts
+
+```
+import { App } from './component-library/base/app';
+import { Component } from './component-library/base/component';
+
+const app = new App();
+
+class ExampleComponent extends Component {
+
+    public dataComponentId = "component;
+
+    onImmeadiate() {
+        this.boundDataMap.set("name", "Sam Gallagher");
+    }
+
+}
+app.createComponent(new ExampleComponent());
+```
+
 ### Lifecycle Hooks
 
-- onImmeadiate - Fires immeadiatly when the component is stored in memory. Disregarding all other components. This can be unpredictable and should be used when extensive testing and caution.
+- onImmeadiate - Fires immeadiatly when the component is stored in memory. This is primarily used for creating the DOM events and updateing the boundDataMap.
 
 - onInit - Fires when the component is initialized, but after all of the components have been created and stored in memory. This will be your primary entry point for most of your component logic.
 
@@ -148,7 +181,7 @@ class CustomComponent extends Component {
 
 ### Methods
 
-- addDomEvent(event, dataEventId, callback) - This method creates an event handler for your DOM event. Event is a string of the event type ("click", "mouseenter", ... ) see https://developer.mozilla.org/en-US/docs/Web/Events for all types. Example below.
+- addDomEvent(event, dataEventId, callback) - This method creates an event handler for your DOM event. Event is a string of the event type ("click", "mouseenter", ... ) see https://developer.mozilla.org/en-US/docs/Web/Events for all types. The callback is scoped using .apply(this) in the component class. Example below.
 
 Let say I want to alert "THIS IS AN ALERT" when a user clicks a button labeled Click Me.
 

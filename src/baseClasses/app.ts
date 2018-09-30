@@ -6,9 +6,11 @@ export class App extends EventEmitter {
 
   constructor() {
     super();
+    this._onImmediate();
 
     setTimeout(() => {
       this.init();
+      this._afterInit();
     });
   }
 
@@ -49,5 +51,15 @@ export class App extends EventEmitter {
         component.onInit();
       }
     });
+  }
+
+  // Private lifecycle hooks
+
+  private _onImmediate() {
+    document.querySelector("body").style.display = "none";
+  }
+
+  private _afterInit() {
+    document.querySelector("body").style.display = "block";
   }
 }

@@ -11,12 +11,12 @@ const app = new App();
 class Sidebar extends TransformingNavigation {
   // Set the template id
   public dataComponentId = "sidebar";
+  onImmeadiate() {
+    console.log("onImmeadiate");
+    this.boundDataMap.set("exampleText", "This is a test");
+  }
   onInit() {
-    console.log("HELLO THIS IS SIDEBAR");
-    // Events
-    this.addDomEvent("click", "buttonClick", () => {
-      alert("TESTING");
-    });
+    console.log("onInit");
   }
 }
 
