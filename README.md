@@ -49,6 +49,7 @@ class Sidebar extends TransformingNavigation {
         console.log("component created");
     }
 }
+app.createComponent(new Sidebar());
 ```
 
 There's more stuff going on here now, let's unpack it.
@@ -58,3 +59,5 @@ Our component is a class (class Sidebar to be exact) and simply extends the Tran
 `public dataComponentId` is a property that tells the component what DOM element is needs to bind to. This is a direct reference to the `data-component-id` field we added to the DOM.
 
 `onInit()` is one of several lifecycle hooks that can be used in a component. You would see a console log of 'component created' when starting this example.
+
+`app.createComponent(new Sidebar())` is required to create a new instance of the component for the App. This holds the component in it's memory and fires all of the lifecycle hooks.
