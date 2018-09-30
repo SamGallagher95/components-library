@@ -1,6 +1,10 @@
 # Components Library
 
 - [Quick Start](#quickStart)
+- [Using a Prebuilt Component](prebuiltComponent)
+- [Writing a Custom Component](customComponent)
+- [App Documentation](appDocs)
+- [Component Documentation](componentDocs)
 
 <a name="quickStart"></a>
 
@@ -17,6 +21,8 @@ const app = new App();
 ```
 
 It's that easy!
+
+<a name="prebuiltComponent"></a>
 
 ## Using a Prebuilt Component
 
@@ -66,6 +72,8 @@ Our component is a class (class Sidebar to be exact) and simply extends the Tran
 
 `app.createComponent(new Sidebar())` is required to create a new instance of the component for the App. This holds the component in it's memory and fires all of the lifecycle hooks.
 
+<a name="customComponent"></a>
+
 ## Writing your own component
 
 Writing your own component is just as easy. This gives you the ultimate flexibility for your project.
@@ -93,6 +101,8 @@ app.createComponent(new CustomComponent());
 
 This unpacks exactly as the one above unpacks.
 
+<a name="appDocs"></a>
+
 ## App Documentation
 
 ### Methods
@@ -102,6 +112,8 @@ This unpacks exactly as the one above unpacks.
 - app.getComponent(dataComponentId) - Returns a specific component from memory using the data-component-id field to find it. If there are multiple components using the same data-component-id, the last one will be returned.
 
 - app.destroyComponent(component) - Destroys the component from memory. The component MUST be passed as the paramater, which can be accessed by storing it from the createComponent method, or using the getComponent(component) method.
+
+<a name="componentDocs"></a>
 
 ## Component Documentation
 
