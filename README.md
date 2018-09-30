@@ -61,3 +61,32 @@ Our component is a class (class Sidebar to be exact) and simply extends the Tran
 `onInit()` is one of several lifecycle hooks that can be used in a component. You would see a console log of 'component created' when starting this example.
 
 `app.createComponent(new Sidebar())` is required to create a new instance of the component for the App. This holds the component in it's memory and fires all of the lifecycle hooks.
+
+## Writing your own component
+
+Writing your own component is just as easy. This gives you the ultimate flexibility for your project.
+
+Just like the above example we need to add a `data-component-id` attribute to our DOM, let's assume we've done that with the value of `component`.
+
+Let's look at our typescript, it looks very similar to the above example.
+
+```
+import { App } from './components-library/base/app';
+import { Component } from './components-library/base/component';
+
+const app = new App();
+
+class CustomComponent extends Component {
+
+    public dataComponentId = "component";
+
+    onInit() {
+        console.log("component created");
+    }
+}
+app.createComponent(new CustomComponent());
+```
+
+This unpacks exactly as the one above unpacks.
+
+## Component Documentation
