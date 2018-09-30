@@ -117,6 +117,27 @@ This unpacks exactly as the one above unpacks.
 
 ## Component Documentation
 
+### Basic Properties
+
+- dataComponentId: string - Directly references the `data-template-id` attribute in the dom. Set this in your Component instance. Example below
+
+index.html
+
+```
+...
+<div data-component-id="component">
+</div>
+```
+
+scripts.ts
+
+```
+class CustomComponent extends Component {
+    public dataComponentId = "component";
+    ...
+}
+```
+
 ### Lifecycle Hooks
 
 - onImmeadiate - Fires immeadiatly when the component is stored in memory. Disregarding all other components. This can be unpredictable and should be used when extensive testing and caution.
