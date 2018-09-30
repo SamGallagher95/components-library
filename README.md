@@ -1,10 +1,10 @@
 # Components Library
 
 - [Quick Start](#quickStart)
-- [Using a Prebuilt Component](prebuiltComponent)
-- [Writing a Custom Component](customComponent)
-- [App Documentation](appDocs)
-- [Component Documentation](componentDocs)
+- [Using a Prebuilt Component](#prebuiltComponent)
+- [Writing a Custom Component](#customComponent)
+- [App Documentation](#appDocs)
+- [Component Documentation](#componentDocs)
 
 <a name="quickStart"></a>
 
