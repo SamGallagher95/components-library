@@ -1,24 +1,24 @@
-import { EventEmitter } from "./eventEmitter";
+import { Element } from "./element";
 
-export class Component extends EventEmitter {
+export class Component extends Element {
   public dataComponentId: string;
+  public elementMap: Map<string, Element> = new Map();
   public boundDataMap: Map<string, any> = new Map();
 
-  private _rawDom: any;
+  constructor(dataComponentId: string) {
+    super(dataComponentId, true);
+    this.dataComponentId = dataComponentId;
+  }
 
   public attachToDom(): void {
-    this._rawDom = document.querySelector(
-      `[data-component-id='${this.dataComponentId}']`
-    );
-    let outerHtml = String(this._rawDom.outerHTML);
+    let outerHtml = String(this.rawDom.outerHTML);
     // Check the boundDataMap and update the values
     this.boundDataMap.forEach((value, key) => {
       console.log(`${key} => ${value}`);
       const regEx = new RegExp(`\{\{${key}\}\}`);
       outerHtml = outerHtml.replace(regEx, value);
     });
-    console.log(outerHtml);
-    this._rawDom.outerHTML = outerHtml;
+    this.rawDom.outerHTML = outerHtml;
   }
 
   public addDomEvent(event: string, dataEventId: string, callback: Function) {
@@ -30,7 +30,9 @@ export class Component extends EventEmitter {
     );
   }
 
-  private getElmFromAttr(attr: string, value: string) {
-    return this._rawDom.querySelector(`[${attr}='${value}'`);
+  public createElement(id: string): Element {
+    const element = new Element(id, false, this.rawDom);
+    this.elementMap.set(id, element);
+    return element;
   }
 }

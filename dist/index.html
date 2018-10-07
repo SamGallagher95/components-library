@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>Hello World!</title>
+    <style>
+        .testClass {
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div data-component-id="sidebar">
-        {{exampleText}}
+    <div data-component-id="testComponent">
+        <div data-element-id="myDiv">
+            This is my div
+        </div>
     </div>
     <script src="bundle.js"></script>
 </body>
